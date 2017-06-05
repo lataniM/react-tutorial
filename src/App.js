@@ -1,12 +1,8 @@
 import React from 'react';
-import ChatBox from './components/ChatBox.jsx';
+import ChatBoxContainer from './components/containers/ChatBoxContainer.jsx';
 
 const App = () => {
-  return (
-    <div>
-      <ChatBox/>
-    </div>
-  )
+  return <ChatBoxContainer/>
 }
 
 export default App;

@@ -1,48 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Messages from './Messages.jsx';
 import InputText from './InputText.jsx';
 
-class ChatBox extends Component {
-
-  constructor(props) {
-    super(props)
-    this.addMessage = this.addMessage.bind(this)
-    this.handleChange = this.handleChange.bind(this)
-    this.state = {
-      messages: ["hello there","how can I help you?"],
-      value: ''
-    }
-  }
-
-  handleChange(event){
-    this.setState({value:event.target.value})
-  }
-
-  addMessage(event) {
-    event.preventDefault()
-    let text = this.state.value
-    let messages = this.state.messages
-    messages.push(text)
-    this.setState({
-      messages
-    })
-    this.setState({value:''})
-  }
-
-  render() {
-    return (
+const ChatBox = ({addMessage, handleChange, messages, inputValue }) => {
+  return (
+    <div>
+      <h1>Chat App</h1>
       <div>
-        <h1>Chat App</h1>
-        <div>
-          <h1>Message List</h1>
-          <Messages messages={this.state.messages}/>
-        </div>
-        <div>
-          <InputText addMessage={this.addMessage} handleChange={this.handleChange} inputValue={this.state.value}/>
-        </div>
+        <h1>Message List</h1>
+        <Messages messages={messages}/>
       </div>
-    )
-  }
+      <div>
+        <InputText addMessage={addMessage} handleChange={handleChange} inputValue={inputValue}/>
+      </div>
+    </div>
+  )
 }
 
 export default ChatBox;
